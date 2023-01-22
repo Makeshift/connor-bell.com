@@ -23,10 +23,9 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({ filename: 'main.css' }),
     new CopyPlugin([
-      { from: 'src/dist/', to: './'},
+      { from: 'src/dist/', to: './' },
     ]),
   ],
-
   module: {
     rules: [
       {
@@ -50,7 +49,7 @@ module.exports = {
             publicPath: '/',
           }
         },
-        'extract-loader',
+          'extract-loader',
         {
           loader: "css-loader",
           options: {
@@ -69,7 +68,7 @@ module.exports = {
             publicPath: '/',
           }
         },
-        'extract-loader',
+          'extract-loader',
         {
           loader: "css-loader",
           options: {
@@ -113,7 +112,7 @@ module.exports = {
             publicPath: '/'
           }
         }]
-      }
+      },
     ]
   },
 

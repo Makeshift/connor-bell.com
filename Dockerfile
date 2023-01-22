@@ -1,10 +1,11 @@
-FROM node:16 AS builder
-COPY . /app
-WORKDIR /app
-RUN yarn install && yarn build
+FROM node:16-alpine AS builder
 
-FROM nginx:stable-alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./nginx/thebestmotherfuckingwebsite.conf /etc/nginx/conf.d/tbmfw.conf
-COPY ./nginx/snippets /etc/nginx/snippets
+WORKDIR /app
+
+COPY ./package.json .
+RUN yarn install
+
+COPY . .
+RUN yarn build
+
+CMD ["yarn", "build"]
